@@ -1,9 +1,9 @@
 ## Bloccit: a Reddit replica to teach the fundamentals of web development and Rails.
 
-Made with my mentor at [Bloc](http://bloc.io).
+###[Joel-Bloccit](https://git.heroku.com/joel-bloccit.git)
 
-(The purpose of the README is to document whatever steps are necessary to get the
-application up and running.)
+The purpose of the README is to document whatever steps are necessary to get the
+application up and running.
 
 Things to cover:
 
@@ -25,6 +25,4 @@ Things to cover:
 
 * ...
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Made with my mentor at [Bloc](http://bloc.io).
