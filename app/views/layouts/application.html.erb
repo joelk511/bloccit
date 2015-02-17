@@ -2,19 +2,31 @@
 <html>
 <head>
   <title>Bloccit</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-	<ul>
+	<div class="container">
+        <ul>
+        <ul class="nav nav-tabs">
 		<li><%= link_to "Home", welcome_index_path %></li>
 		<li><%= link_to "About", welcome_about_path %></li>
 		<li><%= link_to "Contact", welcome_contact_path %></li>
 	</ul>
 
 	<%= yield %>
+	</div>
 
 </body>
 </html>
+
+<!-- 
+
+The "viewport meta" tag instructs browsers on small, high pixel density screens, such as retina iPhones, to display our pages at a regular, readable size.
+
+The <ul> and <li> tags render content as bulleted lists (ul stands for unordered list). Inside of the <li> (list item) tags, you called the link_to method. This is a method available in Rails views, and returns a qualified HTML hyperlink (called an anchor tag). 
+
+-->
