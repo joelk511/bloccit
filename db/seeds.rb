@@ -1,5 +1,10 @@
 require 'faker'
 
+
+Post.delete_all
+Comment.delete_all
+
+
 # Create Posts
 
 50.times do 
@@ -8,6 +13,14 @@ require 'faker'
 		body: Faker::Lorem.paragraph
 		)
 end
+
+# 1.times do
+	special_post = Post.create!(
+		title: "The greatest post on earth",
+		body: "And here it is"
+		)
+# end
+
 posts = Post.all
 
 # Create Comments
@@ -18,6 +31,12 @@ posts = Post.all
 		body: Faker::Lorem.paragraph
 		)
 end
+
+	Comment.create!(
+		post: special_post,
+		body: "This is a unique comment"
+		)
+
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
