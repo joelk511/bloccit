@@ -1,5 +1,6 @@
 require 'faker'
 
+# Resets posts and comments each time after seeding.
 
 Post.delete_all
 Comment.delete_all
@@ -32,6 +33,7 @@ posts = Post.all
 		)
 end
 
+# 1 times do 
 	Comment.create!(
 		post: special_post,
 		body: "This is a unique comment"
