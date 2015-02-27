@@ -24,6 +24,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 # Faker is there to help generate development data automatically.
 gem 'faker'
+# Devise is an authentication system that you can integrate with a Rails app so that users can sign in and out.
+gem 'devise'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
