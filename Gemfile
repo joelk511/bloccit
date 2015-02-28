@@ -26,12 +26,16 @@ gem 'jquery-rails'
 gem 'faker'
 # Devise is an authentication system that you can integrate with a Rails app so that users can sign in and out.
 gem 'devise'
+# Figaro provides an elegant solution for handling sensitive data with environment variables.
+gem 'figaro', '1.0'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -51,6 +55,9 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'pry'
+  gem 'quiet_assets'
 end
 # Use bootstrap to use layers and formatting. 
 gem 'bootstrap-sass'
