@@ -37,4 +37,10 @@ class PostsController < ApplicationController
       end
     end
 
+  before_action :flash_attack, except: [:new, :index]
+
+  def flash_attack
+    flash[:notice] = "Flash Attack!"
+  end
+
 end
