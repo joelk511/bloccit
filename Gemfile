@@ -28,6 +28,8 @@ gem 'faker'
 gem 'devise'
 # Figaro provides an elegant solution for handling sensitive data with environment variables.
 gem 'figaro', '1.0'
+# Redcarpet allows us to add markdown to our website. 
+gem 'redcarpet'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Makes it easier to authorize different users for different tasks in your app.
