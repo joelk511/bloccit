@@ -39,7 +39,7 @@ gem 'jbuilder', '~> 2.0'
 # Image uploading
 gem 'mini_magick'
 # Image uploading
-gem 'carrierwave'
+gem 'carrierwave-aws'
 # Image uploading 
 gem 'fog'
 # bundle exec rake doc:rails generates the API under doc/api.

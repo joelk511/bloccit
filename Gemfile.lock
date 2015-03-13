@@ -41,6 +41,11 @@ GEM
     autoprefixer-rails (5.1.5)
       execjs
       json
+    aws-sdk (1.63.0)
+      aws-sdk-v1 (= 1.63.0)
+    aws-sdk-v1 (1.63.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -57,6 +62,9 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    carrierwave-aws (0.5.0)
+      aws-sdk (~> 1.58)
+      carrierwave (~> 0.7)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -287,7 +295,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   byebug
-  carrierwave
+  carrierwave-aws
   coffee-rails (~> 4.1.0)
   devise
   faker
