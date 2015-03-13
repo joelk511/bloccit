@@ -34,6 +34,8 @@ gem 'redcarpet'
 gem 'turbolinks'
 # Makes it easier to authorize different users for different tasks in your app.
 gem 'pundit'
+# Pagination makes it easier to seperate long topics/posts into various pages.
+gem 'will_paginate', '~> 3.0.5' 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
