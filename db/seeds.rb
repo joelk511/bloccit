@@ -40,8 +40,9 @@ end
 
 100.times do
 	Comment.create!(
-	# user: users.sample, # we have not yet associated Users with Comments
-		post: topics.posts.sample,
+    post: posts.sample,
+    user: users.sample, 
+    topic: topics.sample, 
 		body: Faker::Lorem.paragraph
 		)
 end
