@@ -1,9 +1,15 @@
-def create
-  def new
-    @comment = Comment.find(params[:comment_id])
-    @comment = Comment.new 
-    authorize @comment 
-  end
+# def create
+  
+#   def show
+#     @post = Post.find(params[:id])
+#     @topic = Topic.find(params[:topic_id])
+#     @comment = Comment.find(params[:comment_id])
+
+#   def new
+#     @comment = Comment.find(params[:comment_id])
+#     @comment = Comment.new 
+#     authorize @comment 
+#   end
 
     def create
       @comment = Comment.find(params[:comment_id])
@@ -17,3 +23,6 @@ def create
         render :new
       end
     end
+
+
+    
