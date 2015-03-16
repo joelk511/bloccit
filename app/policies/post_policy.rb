@@ -1,9 +1,5 @@
 class PostPolicy < ApplicationPolicy
 
-  def index?
-	true 
-  end
-
   class Scope
   	attr_reader :user, :scope
 
@@ -12,13 +8,27 @@ class PostPolicy < ApplicationPolicy
       @scope = scope
     end
 
-    def policy_scope
-    	if user.admin? || user.moderator?
-    		scope.all
-    	else
-    	scope.where(:id => user.id).exists?
-    	end
+    def index?
+      if user.admin? || user.moderator?
+        scope.all
+      else
+        scope.where(:id => user.id)
+      end
     end
+
+    def show?
+      index?
+    end
+
+
+
+    # def resolve
+    # 	if user.admin? || user.moderator?
+    # 		scope.all
+    # 	else
+    # 	scope.where(:id => user.id).exists?
+    # 	end
+    # end
   end
 
 
