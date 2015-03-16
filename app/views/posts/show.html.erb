@@ -14,24 +14,9 @@
 
 <div class="row">
 <h2>Comments</h2>
-</div>
- <div id="comments">
-         <%= render :partial => @post.comments %>
- </div>
-
- <%= form_for [@post, @post.comments.new] do |f| %>
-    <div class="form-group">
-       <%= f.label :body, "Add a comment:" %>
-    </div>
-    <div class="form-group">
-       <%= f.label :body, "Body" %>
-    <div class="input-group">
-  	   <input type="text" class="form-control" aria-describedby="basic-addon2">
-    </div>
-   <p><div>
-       <%= f.submit "Create Comment", class: 'btn btn-default' %>
-   </div></p>
-</div>
-<% end %>
+<%= render @post.comments %>
+ 
+<h4>Add a comment:</h4>
+<%= render 'comments/form' %>
 
 	   
