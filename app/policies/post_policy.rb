@@ -1,18 +1,28 @@
 class PostPolicy < ApplicationPolicy
-class Scope < Scope
+    attr_reader :user, :record
+
+    def initialize(user, record)
+      @user = user
+      @record = record
+    end
+
+  def show?
+    scope.where(:id => record.id).exists?
+  end
+
+  def create?
+
+
+  class Scope 
     attr_reader :user, :scope
 
     def initialize(user, scope)
       @user = user
-      @scope = scope
+      @scope = scope 
     end
-
+    
     def resolve
-      if user.admin? || user.administrator? 
-        scope.all
-      else
-        scope.where(user_id: @user.id)
-      end
+      scope 
     end
   end
 end
