@@ -11,10 +11,10 @@ class PostsController < ApplicationController
     authorize @post
   end
 
-    def create
-      @topic = Topic.find(params[:topic_id])
-      @post = current_user.posts.build(post_params)
-          authorize @post
+  def create
+    @topic = Topic.find(params[:topic_id])
+    @post = current_user.posts.build(post_params)
+    authorize @post
       if @post.save 
         flash[:notice] = "Post was saved."
         redirect_to [@topic, @post]
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
         flash[:error] = "There was an error saving the post. Please try again."
         render :new
       end
-    end
+  end
 
   def edit
     @topic = Topic.find(params[:topic_id])
