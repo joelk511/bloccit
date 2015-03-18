@@ -12,6 +12,7 @@ class PostPolicy < ApplicationPolicy
 
   def create?
 
+  end
 
   class Scope 
     attr_reader :user, :scope
@@ -22,7 +23,12 @@ class PostPolicy < ApplicationPolicy
     end
     
     def resolve
-      scope 
+      if user.admin? || user.moderator?
+        scope.all
+      else
+        # user.present? && record.user == user 
+        scope.where(user_id: user.id)
+      end
     end
   end
 end
