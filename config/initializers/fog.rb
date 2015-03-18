@@ -1,3 +1,5 @@
+Excon.defaults[:ssl_verify_peer] = false
+
 CarrierWave.configure do |config|
   config.fog_credentials = {
     provider:               'AWS',
