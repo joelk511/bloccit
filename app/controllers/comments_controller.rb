@@ -29,12 +29,15 @@ def destroy
   else
     flash[:error] = "There was an error deleting the comment. Please try again."
     redirect_to [@topic, @post]
+  end
+end
 
 
 
 def comment_params
     params.require(:comment).permit(:body)
-  end
+end
+
 end
 
 
