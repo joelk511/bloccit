@@ -19,16 +19,15 @@ def create
 end
 
 def destroy
-  @topic = Topic.find(params[:topic_id])
   @post = @topic.posts.find(params[:post_id])
   @comment = @post.comments.find(params[:id]) 
   authorize @comment
   if @comment.destroy 
     flash[:notice] = "Comment was deleted."
-    redirect_to [@topic, @post]
+    redirect_to [@post.topic]
   else
     flash[:error] = "There was an error deleting the comment. Please try again."
-    redirect_to [@topic, @post]
+    redirect_to [@post.topic]
   end
 end
 
