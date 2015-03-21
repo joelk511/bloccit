@@ -1,0 +1,7 @@
+class Vote < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :post
+
+# only one post per user
+  # validates 
+end
