@@ -1,4 +1,12 @@
 class VotesController < ApplicationController
+	before_action :load_post_and_vote
+
+	private
+
+	def load_post_and_vote
+		@post = Post.find(params:[:id])
+		@vote = @post.vote.where(user_id: current_user.id).first
+	end
 
 	def up_votes
 		@post = Post.find(params:[:id])
@@ -11,4 +19,4 @@ class VotesController < ApplicationController
 		end
 		redirect_to :back
 	end
-end
+
