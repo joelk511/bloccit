@@ -12,11 +12,11 @@ class Post < ActiveRecord::Base
 	# validates :user, presence: true 
 
 	def up_votes
-		votes.where(value: 1).count
+		votes.where(value: 1).sum(:value)
 	end
 
 	def down_votes
-		votes.where(value: -1).count
+		votes.where(value: -1).sum(:value)
 	end
 
 	def points
