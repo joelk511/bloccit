@@ -8,15 +8,25 @@ class VotesController < ApplicationController
 		@vote = @post.vote.where(user_id: current_user.id).first
 	end
 
-	def up_votes
-		@post = Post.find(params:[:id])
-		@vote = @post.vote.where(user_id: current_user.id).first
-		
+	def update_vote!(new_value)
 		if @vote
-			@vote.update_attribute(:value, 1)
+			authorize @vote, :update?
+			@vote.update_attribute(:value, new_value)
 		else
-			@vote = current_user.votes.create(:value, 1, post: @post)
-		end
+			@vote = current_user.votes.build(:value, new_value, post: @post)
+			authorize @vote, :create? 
+			@vote.save 
+		end	
+	end
+
+	def up_vote
+		update_vote!(:value, 1)
 		redirect_to :back
 	end
+
+	def down_vote
+		update_vote!(:value, -1)
+		redirect_to :back
+	end
+end
 
