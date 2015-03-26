@@ -1,32 +1,39 @@
 class VotesController < ApplicationController
 	before_action :load_post_and_vote
 
+	def up_vote
+		update_vote!(1)
+		redirect_to :back
+	end
+
+	def down_vote
+		update_vote!(-1)
+		redirect_to :back
+	end
+
+
 	private
 
 	def load_post_and_vote
-		@post = Post.find(params:[:id])
-		@vote = @post.vote.where(user_id: current_user.id).first
+		# @topic = Topic.find(params[:topic_id])
+
+		@post = Post.find(params[:post_id])
+		@vote = @post.votes.where(user_id: current_user.id).first
 	end
+
+	private
 
 	def update_vote!(new_value)
 		if @vote
 			authorize @vote, :update?
 			@vote.update_attribute(:value, new_value)
 		else
-			@vote = current_user.votes.build(:value, new_value, post: @post)
+			@vote = current_user.votes.build(value: new_value, post: @post)
 			authorize @vote, :create? 
 			@vote.save 
 		end	
 	end
 
-	def up_vote
-		update_vote!(:value, 1)
-		redirect_to :back
-	end
 
-	def down_vote
-		update_vote!(:value, -1)
-		redirect_to :back
-	end
 end
 
