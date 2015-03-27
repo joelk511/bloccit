@@ -4,11 +4,23 @@ describe Post do
 	describe "vote methods" do
 
 		before do 
-			user = User.create
-			topic = Topic.create 
-			@post = Post.create(title: 'Post title', body: 'Post bodies must be pretty long.', user: user, topic: topic)
+			@post = associated_post
+			
 			3.times { @post.votes.create(value: 1) }
 			2.times { @post.votes.create(value: -1)}
+		end
+
+		def associated_post
+			user = authenticated_user
+			topic = Topic.create(name: 'Topic name')
+			Post.create(title: 'Post title', body: 'Post bodies must be pretty long', topic: topic, user: user)
+		end
+
+		def authenticated_user
+			user = User.new(email: 'fakeuser@fake.com', password: 'helloworld')
+			user.skip_confirmation!
+			user.save
+			user
 		end
 
 		describe '#up_votes' do
