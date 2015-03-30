@@ -12,18 +12,17 @@ class Post < ActiveRecord::Base
 	validates :user, presence: true 
 
 
-	after_create :create_vote
-
 	def up_votes
-		votes.where(value: 1).sum(:value)
+		votes.where(value: 1).count
 	end
 
 	def down_votes
-		votes.where(value: -1).sum(:value)
+		votes.where(value: -1).count
 	end
 
 	def points
-		up_votes + down_votes
+		# up_votes + down_votes
+		votes.sum(:value).to_i
 	end
 
 	 def update_rank
@@ -33,11 +32,9 @@ class Post < ActiveRecord::Base
      update_attribute(:rank, new_rank)
    end
 
-   private 
-
    def create_vote 
-		user.votes.create(post_id: self.id, value: 1)
+		# user.votes.create(value: 1, post_id: self.id)
 		# Vote.create(user_id: user_id, post_id: self.id, value: 1)
+		user.votes.create(value: 1, post: self)
    end
-
 end

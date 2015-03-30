@@ -1,4 +1,7 @@
 require 'rails_helper'
+# require 'spec_help'
+
+include TestFactories
 
 describe Post do 
 	describe "vote methods" do
@@ -8,19 +11,6 @@ describe Post do
 			
 			3.times { @post.votes.create(value: 1) }
 			2.times { @post.votes.create(value: -1)}
-		end
-
-		def associated_post
-			user = authenticated_user
-			topic = Topic.create(name: 'Topic name')
-			Post.create(title: 'Post title', body: 'Post bodies must be pretty long', topic: topic, user: user)
-		end
-
-		def authenticated_user
-			user = User.new(email: 'fakeuser@fake.com', password: 'helloworld')
-			user.skip_confirmation!
-			user.save
-			user
 		end
 
 		describe '#up_votes' do
@@ -41,4 +31,13 @@ describe Post do
 			end
 		end
 	end
+
+	describe '#create_vote' do
+     it "generates an up-vote when explicitly called" do
+       post = associated_post
+       expect( post.up_votes ).to eq(0)
+       post.create_vote
+       expect( post.up_votes ).to eq(1)
+     end
+   end
 end
