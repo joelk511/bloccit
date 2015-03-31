@@ -3,6 +3,7 @@ class FavoritesController < ApplicationController
 def create
 	@post = Post.find(params[:post_id])
 	favorite = current_user.favorites.build(post: @post)
+	authorize @favorite
 
 	if favorite.save 
 	  flash[:notice] = "Favorited"
@@ -15,8 +16,9 @@ end
 
 def destroy 
 	@post = Post.find(params[:post_id])
-	favorite = current_user.favorites
-
+	favorite = current_user.favorites(params[:id])
+	authorize @favorite
+	
 	if favorite.destroy
 		flash[:notice] = "Success"
 		redirect_to @post
@@ -25,6 +27,7 @@ def destroy
 		redirect_to [@post.topic, @post]
 	end
 end
+
 
 
 end
