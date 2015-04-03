@@ -5,10 +5,31 @@ require 'rails_helper'
 		include TestFactories
 
 		describe '#favorited(post)' do
-			xit "returns 'nil' if the user has not favorited the post" do
+			it "returns 'nil' if the user has not favorited the post" do
+				#Setup
+					user = User.new(email: "Michael@example.com", password: "password")
+					user.skip_confirmation!
+					user.save!
+
+					post = Post.create(title: "Hello World", body: "Yabba dabba do")
+				#Execution
+				#Validation
+					expect(user.favorited(post)).to be_nil
 			end
 
-			xit "returns the appropriate favorite if it exists" do
+			it "returns the appropriate favorite if it exists" do
+				user = User.new(email: "Michael@example.com", password: "password")
+				user.skip_confirmation!
+				user.save!
+
+				post = Post.create(title: "Hello World", body: "Yabba dabba do")
+
+				favorite = Favorite.create(post: post, user: user)
+
+				#Execution
+				#Validation
+				expect(user.favorited(post)).to eq(favorite)
+
 			end
 		end
 	end

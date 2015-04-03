@@ -20,7 +20,10 @@ class User < ActiveRecord::Base
   end
 
   def favorited(post)
-    favorites.where(post_id: post.id).first
+    #all of the user's favorites
+    #Find all of the favorites with a particular a post id
+    #moves from collection to individual
+    favorites.find_by(post_id: post.id)
   end
 
 end
