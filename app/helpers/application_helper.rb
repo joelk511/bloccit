@@ -22,5 +22,24 @@ module ApplicationHelper
 		"<h3>Joel Kaplan</h3>".html_safe
 	end
 
+
+	def up_vote_link(post)
+		disabled = current_user.voted(post) && current_user.voted(post).up_vote? ? 'voted' : '' 
+		css_classes = "glyphicon glyphicon-chevron-up #{disabled}"
+
+		link_to " ",
+        	post_up_vote_path(post),
+        	class: css_classes, method: :post
+	end	
+
+	def down_vote_link(post)
+		disabled = current_user.voted(post) && current_user.voted(post).down_vote? ? 'voted' : '' 
+		css_classes = "glyphicon glyphicon-chevron-down #{disabled}"
+
+		link_to " ",
+		post_down_vote_path(post),
+		class: css_classes, method: :post 
+	end
+  
 end
 

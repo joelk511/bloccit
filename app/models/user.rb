@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
 
   def voted(post)
     votes.find_by(post_id: post.id)
+    # User.first.voted(Post.first) in Rails Console to test. 
   end
 
 end
