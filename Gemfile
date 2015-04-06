@@ -66,6 +66,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry'
+  gem 'capybara'
   gem 'quiet_assets'
 end
 # Use bootstrap to use layers and formatting. 
