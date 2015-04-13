@@ -35,7 +35,7 @@
 <%= render @post.comments %>
  
 <h4>Add a comment:</h4>
-<%= render 'comments/form' %>
+ <%= render partial: 'comments/comment', collection: @comments %>
 	   
 <%= form_for(current_user) do |f| %>
 <% if current_user.avatar? %>
