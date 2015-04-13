@@ -6,17 +6,26 @@ def new
 end
 
 def create
-  @post = Post.find(params[:post_id])
-  @comment = @post.comments.create(comment_params)
-  @comment.user_id = current_user.id
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments
 
-  if @comment.save 
-      flash[:notice] = "Comment was saved."
-      redirect_to [@post.topic, @post]
-  else
+    @comment = current_user.comments.build( comment_params )
+    @comment.post = @post
+    @new_comment = Comment.new 
+
+    authorize @comment
+
+    if @comment.save
+      flash[:notice] = "Comment was created."
+    else
       flash[:error] = "There was an error saving the comment. Please try again."
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
-end
 
 def destroy
   @topic = Topic.find(params[:topic_id])
@@ -35,7 +44,7 @@ def destroy
      end
 end
 
-
+private
 
 def comment_params
     params.require(:comment).permit(:body)

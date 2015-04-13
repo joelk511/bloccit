@@ -1,7 +1,6 @@
-<%= form_for [@post, @post.comments.build] do |f| %>
+<%= form_for [@post, @post.comments.build], remote: true do |f| %>
     <%= f.label :body, "Body" %>
     <div class="input-group">
-       <!-- <input type="text" class="form-control" aria-describedby="basic-addon2"> -->
        <%= f.text_field :body %>
     </div>
    <p><div>
